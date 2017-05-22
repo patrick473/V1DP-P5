@@ -11,7 +11,7 @@ create table film(
 
     filmID integer primary key not null,
     naam text not null,
-    genre text not null,
+    genre integer not null,
     uitgebrachtOp integer not null,
     kosten real not null,
     filmOmschrijving text,
