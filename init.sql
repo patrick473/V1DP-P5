@@ -7,13 +7,12 @@
 );*/
 
 create table genre(
-    genreId integer  not null,
-    genreNaam text not null,
-    genreOmschrijving text,
-    primary key(genreNaam)
+   genreId integer  not null,
+   genreNaam text not null,
+   genreOmschrijving text,
+   primary key(genreId)
 
 );
-
 create table film(
 
     filmID integer primary key not null,
@@ -22,9 +21,10 @@ create table film(
     uitgebrachtOp integer not null,
     kosten real not null,
     filmOmschrijving text,
-    foreign key(genre) references genre(genreNaam)
+    foreign key(genre) references genre(genreId)
 
 );
+
 
 
 create table staf(

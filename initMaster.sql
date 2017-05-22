@@ -3,7 +3,7 @@
     genreId integer  not null,
     genreNaam text not null,
     genreOmschrijving text,
-    primary key(genreNaam)
+    primary key(genreId)
 
 );
 
@@ -15,23 +15,24 @@ create table film(
     uitgebrachtOp integer not null,
     kosten real not null,
     filmOmschrijving text,
-    foreign key(genre) references genre(genreNaam)
+    foreign key(genre) references genre(genreId)
 
 );
 
 create table staf(
 
     stafID integer Primary Key not null,
-    Naam text not null,
+    Naam text not null
 
 );
 
 create table StafBijFilm(
-    filmID integer primary key not null,
-    stafID integer primary key not null,
+    filmID integer  not null,
+    stafID integer  not null,
     rol text not null,
     foreign key(filmID) references film(filmID),
-    foreign key(stafID) references staf(stafID)
+    foreign key(stafID) references staf(stafID),
+    primary key (filmID,stafID)
 );
 
 --inserts
@@ -71,25 +72,25 @@ values (16, 'Sciencefiction');
 insert into genre (genreId, genreNaam)
 values(17, 'Western');
 insert into film (filmID, naam, genre, uitgebrachtOp, kosten, filmOmschrijving)
-values (1, 'Pipilankaus en de zeven dwergen', 'Thriller', 2004, 7.50, 'spannende thriller over een prinsis die in het bos gevonden wordt door zeven dwergen');
+values (1, 'Pipilankaus en de zeven dwergen', 1, 2004, 7.50, 'spannende thriller over een prinsis die in het bos gevonden wordt door zeven dwergen');
 insert into film (filmID, naam, genre, uitgebrachtOp, kosten, filmOmschrijving)
-values(2, 'David leert schrijven', 'Kinderfilm', 1999, 7.00, 'David kan nog niet het woordje database schrijven en dus wordt dit een grote uitdaging om te leren');
+values(2, 'David leert schrijven', 14, 1999, 7.00, 'David kan nog niet het woordje database schrijven en dus wordt dit een grote uitdaging om te leren');
 insert into  film(filmID, naam, genre, uitgebrachtOp, kosten, filmOmschrijving)
-values(3, 'het verwdijnen van Harambe', 'Misdaad', 2016, 10.00, 'Harambe was een dag vrolijk aan het spelen in de dierentuin en de volgende dag was hij verdwenen');
+values(3, 'het verwdijnen van Harambe', 10, 2016, 10.00, 'Harambe was een dag vrolijk aan het spelen in de dierentuin en de volgende dag was hij verdwenen');
 insert into film (filmID, naam, genre, uitgebrachtOp, kosten, filmOmschrijving)
-values(4, 'De avonturen van Henk', 'Avontuur', 2015, 7.50, 'Henk gelooft in het vliegend spaghettie monster en zal alles doen om het bestaan hiervan te bewijzen');
+values(4, 'De avonturen van Henk', 3, 2015, 7.50, 'Henk gelooft in het vliegend spaghettie monster en zal alles doen om het bestaan hiervan te bewijzen');
 insert into film (filmID, naam, genre, uitgebrachtOp, kosten, filmOmschrijving)
-values(5, 'Sneeuw witje en de zeven reuzen', 'Porno', 1997, 11.00, 'Sneeuwwitje weet niet wat haar overkomt');
+values(5, 'Sneeuw witje en de zeven reuzen', 13, 1997, 11.00, 'Sneeuwwitje weet niet wat haar overkomt');
 insert into film (filmID, naam, genre, uitgebrachtOp, kosten, filmOmschrijving)
-values(6, 'Linux', 'Horror', 1886, 2.00, 'Pietje heeft perongeluk linux geinstalleerd op zijn pc. de gevolgen hiervan zijn desastreus');
+values(6, 'Linux', 7, 1886, 2.00, 'Pietje heeft perongeluk linux geinstalleerd op zijn pc. de gevolgen hiervan zijn desastreus');
 insert into film (filmID, naam, genre, uitgebrachtOp, kosten, filmOmschrijving)
-values(7, 'Ik ging verkleed als zwarte piet', 'Misdaad', 2006, 5.00, 'Henk besloot verkleed te gaan als zwarte piet naar de carnavals parade. dit werd echter niet geacepteerd');
+values(7, 'Ik ging verkleed als zwarte piet', 10, 2006, 5.00, 'Henk besloot verkleed te gaan als zwarte piet naar de carnavals parade. dit werd echter niet geacepteerd');
 insert into film(filmID, naam, genre, uitgebrachtOp, kosten, filmOmschrijving)
-values(8, 'Rome Total War', 'Historisch', 2005, 6.00, 'Palatipus moet zijn rijk verdediggen voor de wraatzuchtige David');
+values(8, 'Rome Total War', 6, 2005, 6.00, 'Palatipus moet zijn rijk verdediggen voor de wraatzuchtige David');
 insert into film(filmID, naam, genre, uitgebrachtOp, kosten, filmOmschrijving)
-values(9, 'Matrix voor Dany', 'Gangster', 2000, 12.00, 'Dany komt in de matrix terecht en heeft hoge verwachtingen om te vervullen. Echter is Dany een Linux gebruiker');
+values(9, 'Matrix voor Dany', 5, 2000, 12.00, 'Dany komt in de matrix terecht en heeft hoge verwachtingen om te vervullen. Echter is Dany een Linux gebruiker');
 insert into film(filmID, naam, genre, uitgebrachtOp, kosten, filmOmschrijving)
-values(10, 'md5 Hash', 'Actie', 2001, 13.00, 'Edward Snowden wil bewijzen dat md5 hash nogsteeds werkt. om dit te bewijzen gebruikt hij natuurlijk php');
+values(10, 'md5 Hash', 2, 2001, 13.00, 'Edward Snowden wil bewijzen dat md5 hash nogsteeds werkt. om dit te bewijzen gebruikt hij natuurlijk php');
 insert into staf (stafid,naam)
 values (1,'steven siegel');
 insert into staf (stafid,naam)
