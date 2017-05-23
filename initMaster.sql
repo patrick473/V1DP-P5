@@ -1,6 +1,6 @@
 --create's
  create table genre(
-    genreId integer  not null,
+    genreID integer  not null,
     genreNaam text not null,
     genreOmschrijving text,
     primary key(genreId)
@@ -12,7 +12,7 @@ create table film(
     filmID integer primary key not null,
     naam text not null,
     genre integer not null,
-    uitgebrachtOp integer not null,
+    uitgebrachtIn integer not null,
     kosten real not null,
     filmOmschrijving text,
     foreign key(genre) references genre(genreId)
